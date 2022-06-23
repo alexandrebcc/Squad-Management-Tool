@@ -20,7 +20,7 @@ npm run backend
 npm run build
 ```
 ## 🛠️ Built with
-* [vuejs]((https://vuejs.org/)) - O framework web usado
+* [vuejs]((https://vuejs.org/)) - The web framework used
 * [json-server]([(https://www.npmjs.com/package/json-server)]) - Used to abstract consumption to the backend
 * [ROME]([(https://www.npmjs.com/package/vue3-smooth-dnd)]) - Used to dynamically drag html items
 
