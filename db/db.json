@@ -1,0 +1,978 @@
+{
+  "Statistics": {
+    "top5": [
+      {
+        "id": 1,
+        "name": "Fortaleza",
+        "punctuation": 62.2
+      },
+      {
+        "id": 2,
+        "name": "Ceara",
+        "punctuation": 59.4
+      },
+      {
+        "id": 3,
+        "name": "Jaguaribe",
+        "punctuation": 56.9
+      },
+      {
+        "id": 4,
+        "name": "Fluminense",
+        "punctuation": 55.7
+      },
+      {
+        "id": 5,
+        "name": "Palmeiras",
+        "punctuation": 53.6
+      }
+    ],
+    "worst5": [
+      {
+        "id": 1,
+        "name": "Flamengo",
+        "punctuation": 45.3
+      },
+      {
+        "id": 2,
+        "name": "Sporting",
+        "punctuation": 46.5
+      },
+      {
+        "id": 3,
+        "name": "Vasco",
+        "punctuation": 48.9
+      },
+      {
+        "id": 4,
+        "name": "Corinthians",
+        "punctuation": 50.1
+      },
+      {
+        "id": 5,
+        "name": "São Paulo",
+        "punctuation": 51.2
+      }
+    ]
+  },
+  "MostPlayer": {
+    "player": [
+      {
+        "id": 1,
+        "name": "Alexandre Pereira",
+        "taxa": 0.8,
+        "photo": null
+      }
+    ]
+  },
+  "LessPlayer": {
+    "player": [
+      {
+        "id": 1,
+        "name": "Cristiano Ronaldo",
+        "taxa": 0.15,
+        "photo": null
+      }
+    ]
+  },
+  "MyTeamns": [
+    {
+      "name": "asdasda",
+      "site": "asdasdas",
+      "description": "asdasdas",
+      "type": "real",
+      "tags": [
+        "asdasd"
+      ],
+      "formation": {
+        "id": 2,
+        "formation": "3 - 2 - 3 - 2",
+        "fild": [
+          [
+            {
+              "id": 1,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 2,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 3,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            }
+          ],
+          [
+            {
+              "id": 4,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 5,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            }
+          ],
+          [
+            {
+              "id": 6,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 7,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 8,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            }
+          ],
+          [
+            {
+              "id": 9,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            },
+            {
+              "id": 10,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            }
+          ],
+          [
+            {
+              "id": 11,
+              "name": "",
+              "nacionality": "",
+              "age": 0
+            }
+          ]
+        ]
+      },
+      "id": 1
+    }
+  ],
+  "Formations": [
+    {
+      "id": 1,
+      "formation": "3 - 2 - 2 - 3",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "formation": "3 - 2 - 3 - 2",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "formation": "3 - 4 - 3",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "formation": "3 - 5 - 2",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "formation": "3 - 2 - 3 - 1",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "formation": "4 - 4 - 1 - 1",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "formation": "4 - 4 - 2",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "formation": "4 - 5 - 1",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "formation": "5 - 4 - 1",
+      "fild": [
+        [
+          {
+            "id": 1,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 2,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 3,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 4,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 5,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 6,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 7,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 8,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          },
+          {
+            "id": 9,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 10,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ],
+        [
+          {
+            "id": 11,
+            "name": "",
+            "nacionality": "",
+            "age": 0
+          }
+        ]
+      ]
+    }
+  ],
+  "Players": [
+    {
+      "id": 1,
+      "name": "Cristiano Ronaldo",
+      "nacionality": "Portugal",
+      "age": 35
+    },
+    {
+      "id": 2,
+      "name": "Lional Messi",
+      "nacionality": "Argentina",
+      "age": 33
+    },
+    {
+      "id": 3,
+      "name": "Eirling Haaland",
+      "nacionality": "Noruega",
+      "age": 20
+    },
+    {
+      "id": 4,
+      "name": "Kevin De Bruyne",
+      "nacionality": "Belgica",
+      "age": 29
+    },
+    {
+      "id": 5,
+      "name": "Jack Grealish",
+      "nacionality": "England",
+      "age": 26
+    },
+    {
+      "id": 6,
+      "name": "Riyad Mahrez",
+      "nacionality": "Argely",
+      "age": 28
+    },
+    {
+      "id": 7,
+      "name": "Raheem Sterling",
+      "nacionality": "England",
+      "age": 25
+    },
+    {
+      "id": 8,
+      "name": "Oleksandr Zinchenko",
+      "nacionality": "Uckrane",
+      "age": 24
+    },
+    {
+      "id": 9,
+      "name": "Bernardo Silva",
+      "nacionality": "Portugal",
+      "age": 26
+    },
+    {
+      "id": 10,
+      "name": "Rodri",
+      "nacionality": "Span",
+      "age": 28
+    },
+    {
+      "id": 11,
+      "name": "Ilkay Gundogan",
+      "nacionality": "Germany",
+      "age": 30
+    },
+    {
+      "id": 12,
+      "name": "Ederson Silva",
+      "nacionality": "Brazil",
+      "age": 29
+    }
+  ]
+}
