@@ -3,7 +3,7 @@
   <header>
       <h1>Create your team</h1>
   </header>
-  <form class="form" @submit="createTeam" method="GET" action="http://192.168.1.102:8080/myteams">
+  <form class="form" @submit="createTeam">
       <h1 class="subtitle">TEAM INFORMATION</h1>   
       <fieldset class="group">
         <section class="grid team-info-column-1">
@@ -25,8 +25,8 @@
       <div class="team-type">
           <label for="real" class="title-field " >Team type</label>
           <div>
-              <label  required>
-                  <input type="radio" name="team-type" value="real" v-model="teamtype" ><span></span>Real
+              <label>
+                  <input type="radio" name="team-type" value="real" v-model="teamtype" required><span></span>Real
               </label>
               <label>
                   <input type="radio" name="team-type" value="fantasy"  v-model="teamtype"><span></span>Fantasy
@@ -35,11 +35,11 @@
           <div class="tags">
               <label for="tags" class="title-field">Tags</label>   
               <div class="area-input-tag" > 
-                <div  class="tag-input-tag" v-for="(tag, index) in tags" :key="tag">
+                <div  class="tag-input-tag" v-for="(tag, index) in tags" :key="tag" required>
                     {{tag}}
                     <span @click="removeTag(index)">x</span>
                 </div>
-                <input type="text" placeholder="Enter a Tag" class="tag-input-text" @keydown="addTag">    
+                <input type="text" placeholder="Enter a Tag" class="tag-input-text" @keydown="addTag" >    
               </div>
             </div>
       </div>
@@ -59,7 +59,11 @@
                         </select>
                     </div>
 
-                    <div class="field">                  
+                    <div class="field">
+                        <div class="camp">
+                            <div class="line-med"></div>
+                            <div class="camp-football"></div> 
+                        </div>          
                         <Container  v-for="(player,index) in formation.fild" :key="player">                          
                             <Container class="section" group-name="soccer-players" 
                                       @drag-start="onStart('formation',index,$event)" 
@@ -67,7 +71,12 @@
                                       :get-child-payload="getChildPayload"> 
                                           <div  v-for="play in player" :key="play">
                                               <div class="border-player">
-                                                <div  class="player" >
+                                                <InfoPlayer
+                                                  :data="play"
+                                                  :hover="hover"
+                                                  :index="indexPlayer"
+                                                ></InfoPlayer>
+                                                <div  class="player" @mouseover.native="hover=true, indexPlayer=play.id" @mouseleave.native = "hover=false, indexPlayer=-1">
                                                     <h1 v-if="play.name===''">+</h1>
                                                     <h1 v-else>{{select_initials(play.name)}}</h1>
                                                 </div>
@@ -128,7 +137,7 @@
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd' 
 import SearchPlayer from './registerComponents/searh-player.vue'
-
+import InfoPlayer from './registerComponents/info-players.vue'
 
 
 export default {
@@ -136,7 +145,8 @@ export default {
     components:{
       Container,
       Draggable,
-      SearchPlayer
+      SearchPlayer,
+      InfoPlayer
       },
     data(){
         return{
@@ -156,7 +166,9 @@ export default {
             hover:false,
             sortOrders:[],
             dragging:{ index:-1, data:{}},
-            data: []
+            data: [],
+            hover:false,
+            indexPlayer:-1
            
         }
     },
@@ -200,7 +212,7 @@ export default {
             }
            
         }
-       console.log(removedIndex, addedIndex);
+      
       },
       onStart(position,section,dragResult){
         const {payload,isSource} = dragResult;
@@ -220,7 +232,7 @@ export default {
             }
           }
         }
-        console.log(payload.index);
+  
       },
       getChildPayload(index){
         return {index};
@@ -254,7 +266,7 @@ export default {
             body: datajson
           });
            const res = await req.json();
-           console.log(res);
+           router.push('/myteams')
           
         }else{
           const req = await fetch("http://localhost:3000/MyTeamns",{
@@ -263,7 +275,7 @@ export default {
           body: datajson
           });
           const res = await req.json();
-          console.log(res);
+          this.$router.push('/myteams');
           
          }
       },
@@ -291,12 +303,11 @@ export default {
       },
        
      filteredData() {
-        console.log(this.filterkey);
+     
         this.sortOrders = this.columns.reduce((o, key) => ((o[key] = 1), o), {})
         const filter = this.filterKey && this.filterKey.toLowerCase()
-        console.log("aqui:");
         /*console.log(Sting(this.filterKey) && String(this.filterKey).toLowerCase())*/
-        console.log(filter)
+
         /*const order = this.sortOrders[sortKey] || 1*/
         let data = this.players
         if (filter) {
@@ -306,7 +317,6 @@ export default {
                
                 return String(row[key]).toLowerCase().indexOf(filter) > -1
               })
-              console.log(result);
             })
             this.data = result
           } 
@@ -400,7 +410,6 @@ export default {
   padding-right: 5rem;
   margin: 3rem;
 }
-
 .name-input input:hover, .name-input:hover > .title-field,
 .area-input:hover, .tags:hover > .title-field,
 .area-input-tag:hover, .formation:hover > .title-field, 
@@ -430,7 +439,6 @@ input,select,textarea,button,.area-input,.area-input-tag
   resize:none;
 
 }
-
 .area-input input,.tag-input-text{
   border:none;
   outline:none;
@@ -457,7 +465,6 @@ input,select,textarea,button,.area-input,.area-input-tag
   background-color:#C50341;
   border-radius:20px 20px;
 }
-
 .tag-input-tag > span{
   cursor:pointer;
   margin-left:3px;
@@ -486,10 +493,10 @@ input,select,textarea,button,.area-input,.area-input-tag
 
 }
 header {
-  padding-bottom: 25px;
+  padding-bottom: 20px;
   border-bottom: solid 1px #e9e3e8;
+  align-items:center;
 }
-
 .team-info-column-1 {
   grid: 50px / 1fr 1fr;
   grid-gap: 150px;
@@ -505,7 +512,6 @@ header {
   grid: 250px / 1fr 1fr;
   grid-gap: 150px;
 }
-
 input[type="radio"] {
   display: inline-block;
   width: 10px;
@@ -523,7 +529,7 @@ input[type="radio"] {
 
 header h1 {
   margin-left: 10px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 10px;
   color: #552c8a;
   border-bottom: 15px;
@@ -536,14 +542,12 @@ header h1 {
   color: #8d8d8d;
   font-size: 20px;
 }
-
 #input-radio {
   flex-direction: inline-block;
   justify-content: space-between;
   width: 3em;
   height: 3em;
 }
-
 .formation {
   justify-content: flex-start;
   align-items: center;
@@ -552,12 +556,10 @@ header h1 {
   right:20px;
 
 }
-
 .formation select{
   width:100%;
   height:2rem;
 }
-
 .group,
 .group-dinamic {
   padding-right: 150px;
@@ -572,7 +574,6 @@ header h1 {
   height: 2rem;
   cursor: pointer;
 }
-
 .formation {
   flex-direction: row;
   margin-left: 2%;
@@ -585,14 +586,24 @@ header h1 {
   padding: 0 1rem;
 
 }
-
+.info-player{
+  position: absolute;
+  background-color:#552c8a;
+  width:100px;
+  height:60px;
+  bottom:20px;
+}
 .submit-btn{
   margin: 0 11.5rem;
   width:33.2%;
   height:3rem;
   color: #fff;
+  transition:0.3s;
+  cursor: pointer;
 }
-
+.submit-btn:hover, .player:hover{
+    box-shadow:  0 0 1em #d45eb1;
+ }
 .field {
   margin-top:2rem;
   min-height:45rem;
@@ -606,7 +617,33 @@ header h1 {
   flex-flow: column nowrap;
 
 }
-
+.camp{
+    width:100%;
+     position:absolute;
+}
+.camp-football{  
+    position:relative; 
+    display:flex;
+    justify-content: center;
+    width:10rem;
+    height:10rem;
+    border-radius:50%;
+    background-color:none;
+    border: 0.15em solid var(--color-border);
+    left:12rem;
+    top:13.6rem;
+  
+}
+.line-med{
+    position:relative;
+    left:0rem;
+    top:260px;
+    min-width:5%;
+    width:28.5%;
+    max-width:67.3%;
+    height:25px;
+    border-top: 0.15em solid var(--color-border); 
+}
 .submit-btn,.field{
   background-image: linear-gradient(#b73c7b, #663088);
 }
@@ -616,10 +653,9 @@ header h1 {
     height:100%;
     align-items:center;
     justify-content:space-around;
-    padding-left:5%;
+    padding-left:10%;
     margin-left:5%;
 }
-
 .player {
   align-items: center;
   justify-content: center;
@@ -629,7 +665,6 @@ header h1 {
   border-radius: 50%;
   border: 0.05em solid #852962;
 }
-
 .border-player{
   align-items:center;  
   justify-content:center; 
@@ -656,7 +691,6 @@ header h1 {
   border: 0.15rem dashed #e9e3e8; 
   
 }
-
 .block-info{
   justify-content: space-between;
   width:100%;
@@ -698,6 +732,13 @@ header h1 {
 }
 .area-input,.area-input-tag{
   width:100%;
+}
+.line-med{
+  width:69%;
+}
+.camp-football{  
+    left:15rem;
+    top:13.5rem;
 }
 
 }

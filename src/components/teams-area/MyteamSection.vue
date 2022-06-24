@@ -37,14 +37,12 @@ export default {
     },
     methods: {
         async getMyteamns(){
-            console.log("chamou")
             const req = await fetch("http://localhost:3000/MyTeamns");
             const data = await req.json();
             this.myteams = data;
 
         },
         update(){
-            console.log("chamou atualização");
         this.getMyteamns()}
     },
     mounted(){

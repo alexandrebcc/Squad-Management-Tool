@@ -3,7 +3,7 @@
       <div>
        <Container   group-name="soccer-players" @drag-start="onStart('players',-1,$event)" @drop="onDrop('players',-1,$event)" :get-child-payload="getChildPayload">
           
-          <Draggable  v-for="(key,index) in filteredData" :key="key.id">       
+          <Draggable  v-for="key in filteredData" :key="key.id">       
             
                 <section  class="search">
                   
@@ -84,7 +84,7 @@ export default {
             }
            
         }
-       console.log(removedIndex, addedIndex);
+
       },
       onStart(position,section,dragResult){
         const {payload,isSource} = dragResult;
@@ -104,7 +104,7 @@ export default {
             }
           }
         }
-        console.log(payload.index);
+
       },
       getChildPayload(index){
         return {index};
@@ -114,10 +114,10 @@ export default {
     filteredData() {
       
       const filterKey = this.filterKey && this.filterKey.toLowerCase()
-      console.log(filterKey)
+  
       let data = this.data
       if (filterKey) {
-        console.log("entrou aqui")
+    
         data = data.filter((row) => {
           return Object.keys(row).some((key) => {
             return String(row[key]).toLowerCase().indexOf(filterKey) > -1

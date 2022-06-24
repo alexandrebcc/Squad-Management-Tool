@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # my_challenge
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# Squad-Management-Tool
+>>>>>>> 33556936ab7eb5064b8e6e9167531c86e0b17b83
