@@ -14,7 +14,10 @@
           
           <div class="name-input">
               <label for="site-team" class="title-field">Team website</label>
-              <input type="text" name='site-team' v-model="siteteam"  required>
+              <input type="text" name='site-team' v-model="siteteam" required>
+               <p id="error" v-if="errors.length">
+                  {{errors[0]}}
+                </p>
           </div>
       </section>
           <section class="grid team-info-column-2">
@@ -39,7 +42,7 @@
                     {{tag}}
                     <span @click="removeTag(index)">x</span>
                 </div>
-                <input type="text" placeholder="Enter a Tag" class="tag-input-text" @keydown="addTag" >    
+                <input type="text" placeholder="Def" class="tag-input-text" @keydown="addTag" >    
               </div>
             </div>
       </div>
@@ -85,43 +88,30 @@
                               </Container>   
                         </Container>
                       </div>
-                </div>
-              
-                  <div class="name-input">
-                      <label for="search-players" class="title-field">Search Players</label>
-                      <input type="text" name='' id="search-players"  v-model="filterkey" @input="filteredData">
-                      <div v-if="1==1 ">  
-                        <Container group-name="soccer-players" @drag-start="onStart('players',-1,$event)" @drop="onDrop('players',-1,$event)" :get-child-payload="getChildPayload">
-                            <Draggable v-for="(key,index) in this.data" :key="key.id" >       
-                                <section class="search" v-if="index<9">
-                                    <span class="block-info">
-                                        <p class="attributeTitle">Name:<span class="attribute">{{key['name']}}</span></p>
-                                        <p class="attributeTitle">Age:<span class="attribute">{{key['age']}}</span></p>
-                                    </span>
-                                    <span  class="block-info">
-                                        <p class="attributeTitle">Nacionality:<span class="attribute">{{key['nacionality']}}</span></p>
-                                    </span>
-                              
-                                </section>
-                        </Draggable></Container>
-                       
-                          
-
-                      </div>
-                      <p v-else>No matches found.</p>
                     </div>
-                 
-                   <!--
+              
                     <div class="name-input">
-                      <label for="search-players" class="title-field">Search Players</label>
-                      <input type="text" name='' id="search-players"  v-model="filterkey" @input="filteredData()" >
-                    
-                     <SearchPlayer
-                        :data="players"
-                        :columns="columns"
-                        :filterKey="filterkey"
-                     ></SearchPlayer>
-                     </div>-->
+                        <label for="search-players" class="title-field">Search Players</label>
+                        <input type="text" name='' id="search-players"  v-model="filterKey">
+                        <div v-if="1==1 ">  
+                          <Container group-name="soccer-players" @drag-start="onStart('players',-1,$event)" @drop="onDrop('players',-1,$event)" :get-child-payload="getChildPayload">
+                              <Draggable v-for="(key,index) in filterPlay" :key="key.id" >       
+                                  <section class="search" v-if="index<9">
+                                      <span class="block-info">
+                                          <p class="attributeTitle">Name:<span class="attribute">{{key['name']}}</span></p>
+                                          <p class="attributeTitle">Age:<span class="attribute">{{key['age']}}</span></p>
+                                      </span>
+                                      <span  class="block-info">
+                                          <p class="attributeTitle">Nacionality:<span class="attribute">{{key['nacionality']}}</span></p>
+                                      </span>
+                                
+                                  </section>
+                          </Draggable></Container>
+
+                        </div>
+                        <p v-else>No matches found.</p>
+                      </div>
+
             </section>      
       </fieldset>
       <section class="grid">         
@@ -136,7 +126,6 @@
 
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd' 
-import SearchPlayer from './registerComponents/searh-player.vue'
 import InfoPlayer from './registerComponents/info-players.vue'
 
 
@@ -145,8 +134,10 @@ export default {
     components:{
       Container,
       Draggable,
-      SearchPlayer,
       InfoPlayer
+      },
+      props: {
+        
       },
     data(){
         return{
@@ -158,19 +149,32 @@ export default {
             description:null,
             teamtype:[],
             tags:[],
-            formation:null,
-            sortKey: '',
-            columns: ['name', 'nacionality','age'] ,
-            filterkey:"",
+            formation:[{formation:"3 - 2 - 2 - 3"}],
+            columns: ['name', 'nacionality','age'],
+            errors:[],
+            filterKey:"",
             result:[],
             hover:false,
-            sortOrders:[],
             dragging:{ index:-1, data:{}},
             data: [],
-            hover:false,
             indexPlayer:-1
            
         }
+    },
+     computed:{
+        filterPlay(){
+          let result = [];
+          result = this.players.filter((play) => {
+            return (
+              play.name.toLowerCase().indexOf(this.filterKey.toLowerCase()) > -1 ||
+              String(play.age).toLowerCase().indexOf(this.filterKey.toLowerCase()) > -1 ||
+              play.nacionality.toLowerCase().indexOf(this.filterKey.toLowerCase()) > -1 
+            );
+          });
+
+        return result;
+      }
+     
     },
     methods:{
       onDrop (position,section,dropResult) {
@@ -238,10 +242,6 @@ export default {
         return {index};
       },
       
-      modify(){
-        this.result = filteredData;
-      },
-
       async getFormations(){
         const req = await fetch("http://localhost:3000/Formations");
         const data = await req.json();
@@ -249,35 +249,38 @@ export default {
       },
       async createTeam(e){
         e.preventDefault();
-        const data = {
-        name: this.nameteam,
-        site: this.siteteam,
-        description: this.description,
-        type: this.teamtype,
-        tags: Array.from(this.tags),
-        formation: this.formation
-       }
-        const datajson = JSON.stringify(data);
-        if(this.$route.params.id){
-          const req = await fetch('http://localhost:3000/MyTeamns/'+this.$route.params.id,
-          {
-            method:"PUT",
-            headers:{"Content-Type":"application/json"},
-            body: datajson
-          });
-           const res = await req.json();
-           router.push('/myteams')
-          
-        }else{
-          const req = await fetch("http://localhost:3000/MyTeamns",{
-          method: "POST",
-          headers: {"Content-Type":"application/json"},
-          body: datajson
-          });
-          const res = await req.json();
-          this.$router.push('/myteams');
-          
-         }
+        if(this.checkForm()){return;}
+        else{
+            const data = {
+            name: this.nameteam,
+            site: this.siteteam,
+            description: this.description,
+            type: this.teamtype,
+            tags: Array.from(this.tags),
+            formation: this.formation
+          }
+            const datajson = JSON.stringify(data);
+            if(this.$route.params.id){
+              const req = await fetch('http://localhost:3000/MyTeamns/'+this.$route.params.id,
+              {
+                method:"PUT",
+                headers:{"Content-Type":"application/json"},
+                body: datajson
+              });
+              const res = await req.json();
+              this.$router.push('/myteams')
+              
+            }else{
+              const req = await fetch("http://localhost:3000/MyTeamns",{
+              method: "POST",
+              headers: {"Content-Type":"application/json"},
+              body: datajson
+              });
+              const res = await req.json();
+              this.$router.push('/myteams');
+              
+            }
+        }
       },
       async getPlayers(){
         const req = await fetch("http://localhost:3000/Players");
@@ -301,35 +304,6 @@ export default {
 
 
       },
-       
-     filteredData() {
-     
-        this.sortOrders = this.columns.reduce((o, key) => ((o[key] = 1), o), {})
-        const filter = this.filterKey && this.filterKey.toLowerCase()
-        /*console.log(Sting(this.filterKey) && String(this.filterKey).toLowerCase())*/
-
-        /*const order = this.sortOrders[sortKey] || 1*/
-        let data = this.players
-        if (filter) {
-           
-          let result = data.filter((row) => {
-              return  Object.keys(row).some((key) => {
-               
-                return String(row[key]).toLowerCase().indexOf(filter) > -1
-              })
-            })
-            this.data = result
-          } 
-          
-        return
-         
-      },
-
-      sortBy(key) {
-        this.sortOrders = this.columns.reduce((o, key) => ((o[key] = 1), o), {})
-        this.sortKey = key
-        this.sortOrders[key] = this.sortOrders[key] * -1
-      },
       capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1)
       },
@@ -351,11 +325,27 @@ export default {
         let complete_name = name.split(" ");
         let nome = complete_name[0][0]+complete_name[complete_name.length-1][0];
         return String(nome).toUpperCase();
+      },
+      checkForm(){
+        this.errors = [];
+        if(!this.validSite(String(this.siteteam))){
+          this.errors.push("Please use a valid site.");
+        }
+        if(this.errors.length)
+          return true;
+       
+        
+      },
+      validSite(site){
+        var model= /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+        
+        return model.test(site) ? true : false;
       }
+
     },
     
-    created(){ 
-      this.formation = { 
+    created(){   
+      this.formation=this.optionsFormations = { 
         "id": 1,
         "formation": "3 - 2 - 2 - 3",
         "fild": [
@@ -379,22 +369,20 @@ export default {
             [
               {"id":0,"name": "","nacionality": "","age":0 }
             ]
-        ]    
+        ],
+          
       },
-        this.players =  {
+        this.players = [ {
           "id": 1,
           "name": "Cristiano Ronaldo",
           "nacionality": "Portugal",
           "age": 35
-        },
+        }],
 
         this.updateTeam();
 
     },
-    computed:{
-      
 
-    },
     mounted(){
       this.getFormations();
       this.getPlayers();
@@ -459,15 +447,17 @@ input,select,textarea,button,.area-input,.area-input-tag
   min-width:50px;
   max-width:100%;
   float:left;
-  margin-left :5px;
+  margin-left:5px;
+  margin-right:5px;
   margin-top:5px;
-  padding:5px;
+  padding-left:10px;
   background-color:#C50341;
   border-radius:20px 20px;
 }
 .tag-input-tag > span{
   cursor:pointer;
-  margin-left:3px;
+  margin-left:10px;
+  padding-right:10px
 }
 .name-input input {
   display: block-inline;
@@ -512,16 +502,26 @@ header {
   grid: 250px / 1fr 1fr;
   grid-gap: 150px;
 }
+
 input[type="radio"] {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  vertical-align: middle;
-  border: 2px solid #f56;
-  border-radius: 50%;
-  padding: 2px;
-  margin: 0 5px;
+  place-content: center;
+  margin-right:5px;
+  padding-left:10px;
 }
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.9em;
+  height: 0.9em;
+  margin-right:2rem;
+  border-radius: 70%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #A6397D;
+}
+
+
 #tags {
   width: 100%;
   height: 70%;
@@ -541,6 +541,10 @@ header h1 {
   padding-bottom: 40px;
   color: #8d8d8d;
   font-size: 20px;
+}
+
+#error{
+  color:#C50341;
 }
 #input-radio {
   flex-direction: inline-block;
@@ -649,12 +653,11 @@ header h1 {
 }
 .section {
     display:flex;
-    width:80%;
+    width:100%;
     height:100%;
     align-items:center;
     justify-content:space-around;
-    padding-left:10%;
-    margin-left:5%;
+    
 }
 .player {
   align-items: center;
@@ -672,6 +675,7 @@ header h1 {
   height: 5.5rem;
   border-radius: 50%;
   border: 0.15em dashed #A967B3;
+
 }
 .player h1{
     display:flex;

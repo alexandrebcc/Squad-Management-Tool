@@ -13,7 +13,7 @@
 export default {
   name:"InfoPlayer",
   props: {
-    data:Array,
+    data:Object,
     hover:Boolean,
     index:Number
   }

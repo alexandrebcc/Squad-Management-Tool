@@ -3,7 +3,7 @@
         <header id="topo">
             <h1>My Teams</h1>
             <router-link to="/registration">
-                <button type="button" id="button">+</button>
+                <button v-if="this.countTeams <13" type="button" id="button">+</button>
             </router-link>
         </header>
     
@@ -24,12 +24,14 @@ import { ref } from 'vue'
 export default {
     name:"Myteams",
     components:{
-        Grid
+        Grid,
+
     },
     
     data() {
         return{
             myteams:[],
+            countTeams:0,
             searchQuery:ref(''),
             gridColumns:["name","description"]
         }
@@ -40,6 +42,7 @@ export default {
             const req = await fetch("http://localhost:3000/MyTeamns");
             const data = await req.json();
             this.myteams = data;
+            this.countTeams = this.myteams.length;
 
         },
         update(){
@@ -57,7 +60,9 @@ export default {
 
 <style scoped>
  
-
+a{
+    text-decoration: none;
+}
  #button{
     display: flex;
     text-decoration: none;
